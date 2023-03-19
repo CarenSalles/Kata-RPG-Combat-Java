@@ -162,18 +162,20 @@ public class Character {
             return;
     }
 
-    double damageActual = getActualDamage();if(character.getActualLevel()-this.getActualLevel()>5)
+    double damageActual = getActualDamage()
     {
-        damageActual = getActualDamage() * 0.5;
-    }if(this.getActualLevel()-character.getActualLevel()>5)
-    {
-        damageActual = getActualDamage() * 1.5;
+        if (character.getActualLevel() - this.getActualLevel() > 5) {
+            damageActual = getActualDamage() * 0.5;
+        }
+        if (this.getActualLevel() - character.getActualLevel() > 5) {
+            damageActual = getActualDamage() * 1.5;
+        }
     }
 
     public void healCharacter(Character character) {
-        if(character.getFaction() != null && character.actualHealth < 1000) {
-        character.actualHealth += character.initSanation;
-        setActualHealth(character.actualHealth);
+        if (character.getFaction() != null && character.actualHealth < 1000) {
+            character.actualHealth += character.initSanation;
+            setActualHealth(character.actualHealth);
         }
-      }
+    }
 }
