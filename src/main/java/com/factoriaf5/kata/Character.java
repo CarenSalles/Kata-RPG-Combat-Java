@@ -15,23 +15,6 @@ public class Character {
     private int range;
     private Faction faction;
 
-    public Character(int initHealth, int actualHealth, int initDamage, int actualDamage, int initSanation,
-            int actualSanation, int initLevel, int actualLevel, boolean alive, int distanceEnemy, int range,
-            Faction faction) {
-        this.initHealth = initHealth;
-        this.actualHealth = actualHealth;
-        this.initDamage = initDamage;
-        this.actualDamage = actualDamage;
-        this.initSanation = initSanation;
-        this.actualSanation = actualSanation;
-        this.initLevel = initLevel;
-        this.actualLevel = actualLevel;
-        this.alive = alive;
-        this.distanceEnemy = distanceEnemy;
-        this.range = range;
-        this.faction = faction;
-    }
-
     public int getRange() {
         return range;
     }
@@ -142,7 +125,7 @@ public class Character {
         this.actualHealth = actualHealth;
     }
 
-    public int getFaction() {
+    public Faction getFaction() {
         return faction;
     }
 
@@ -160,15 +143,22 @@ public class Character {
         if (character.getFaction() != null && this.getFaction() != null
                 && this.getFaction().getName().equals(character.getFaction().getName()))
             return;
-    }
 
-    double damageActual = getActualDamage()
-    {
+        double damageActual = getActualDamage();
+
         if (character.getActualLevel() - this.getActualLevel() > 5) {
             damageActual = getActualDamage() * 0.5;
         }
+
         if (this.getActualLevel() - character.getActualLevel() > 5) {
             damageActual = getActualDamage() * 1.5;
+        }
+        character.actualHealth -= damageActual;
+        character.setActualHealth(character.actualHealth);
+        if (character.actualHealth <= 0) {
+            this.actualHealth = 0;
+            setActualHealth(character.actualHealth);
+            character.setAlive(false);
         }
     }
 
@@ -178,4 +168,5 @@ public class Character {
             setActualHealth(character.actualHealth);
         }
     }
+
 }
