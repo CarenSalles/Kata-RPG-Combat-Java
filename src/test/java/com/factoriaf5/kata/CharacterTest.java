@@ -7,27 +7,31 @@ import org.junit.jupiter.api.Test;
 public class CharacterTest {
 
     @Test
-    public void Health__is__1000() {
-        Character miCharacter =  new Character(health:1000, level:1, alive:true)
+    public void Character_Health_is_1000() {
+        Character miCharacter =  new Character();
         assertEquals(1000, miCharacter.getHealth());
     }
 
     @Test
-    public void level__is__1() {
-        Character miCharacter = new Character(1000, 1, true)
+    public void level_is_1() {
+        Character miCharacter = new Character("1000, 1, true")
         assertEquals(1, miCharacter.getLevel());
     }
 
     @Test
     public void Character__is__alive() {
-        Character micCharacter = new Character(health:1000, 1, true)
+        Character micCharacter = new Character("health:1000, 1, true")
         assertEquals(true, miCharacter.getAlive());
     }
 
     @Test
     public void damaged() {
-        Character miCharacter = new Character(1000, 1, true);
+        Character miCharacter = new Character("1000, 1, true");
         assertEquals(damage(50), miCharacter.getAlive());
+    }
+
+    private Object damage(int i) {
+        return null;
     }
 
 }
